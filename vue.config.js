@@ -1,4 +1,7 @@
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/wiz-damage/'
+    : '/',
   chainWebpack: config => {
       config
           .plugin('html')
