@@ -343,16 +343,6 @@
 
 import $ from 'jquery'
 
-const MONSTER_TYPE = 
-  [
-    {value: "", name: ""},
-    {value: "1", name: "火"},
-    {value: "2", name: "水"},
-    {value: "3", name: "雷"},
-    {value: "4", name: "光"},
-    {value: "5", name: "闇"},
-  ];
-
 const WEAK_TYPE = 
   [
     {value: "", name: ""},
@@ -378,8 +368,9 @@ const WEAK_TYPE =
     {value: "12345", name: "全屬性"},
   ];
 
-const ATTACK_TYPE =
+const MONSTER_TYPE =
   [
+    {value: "", name: ""},
     {value: "1", name: "火"},
     {value: "2", name: "水"},
     {value: "3", name: "雷"},
@@ -387,6 +378,8 @@ const ATTACK_TYPE =
     {value: "5", name: "闇"},
     {value: "6", name: "無"},
   ];
+
+const ATTACK_TYPE = MONSTER_TYPE;
 
 const ATTACK_MONSTER_LIST = 
   {
@@ -396,6 +389,7 @@ const ATTACK_MONSTER_LIST =
       "3": 1.5,
       "4": 1,
       "5": 1,
+      "6": 1,
     },
     "2": {
       "1": 1.5,
@@ -403,6 +397,7 @@ const ATTACK_MONSTER_LIST =
       "3": 0.5,
       "4": 1,
       "5": 1,
+      "6": 1,
     },
     "3": {
       "1": 0.5,
@@ -410,20 +405,23 @@ const ATTACK_MONSTER_LIST =
       "3": 1,
       "4": 1,
       "5": 1,
+      "6": 1,
     },
     "4": {
-      "1": 1,
-      "2": 0.5,
-      "3": 1.5,
-      "4": 1,
-      "5": 1,
-    },
-    "5": {
       "1": 1,
       "2": 1,
       "3": 1,
       "4": 1,
       "5": 1.5,
+      "6": 1,
+    },
+    "5": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1.5,
+      "5": 1,
+      "6": 1,
     },
     "6": {
       "1": 1,
@@ -431,6 +429,7 @@ const ATTACK_MONSTER_LIST =
       "3": 1,
       "4": 1.5,
       "5": 1,
+      "6": 1,
     },
   }
 
@@ -474,7 +473,7 @@ export default {
     },
     glbEnType: {
       get: function () { return this.globalEnemy.type; },
-      set: function (newVal) { this.globalEnemy.type = newVal; this.enemys.forEach(enemy => { enemy.type = newVal; }); this.renderDropdown(); }
+      set: function (newVal) { this.globalEnemy.type = newVal; this.enemys.forEach(enemy => { enemy.type = newVal; }); }
     },
     glbEnWeak: {
       get: function () { return this.globalEnemy.weak; },
